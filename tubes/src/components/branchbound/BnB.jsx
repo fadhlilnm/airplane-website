@@ -18,8 +18,13 @@ const BranchAndBound = () => {
   const [cost, setCost] = useState(0);
   const [price, setPrice] = useState(0);
 
+  const [runningTime, setRunningTime] = useState(0);
+
   // Fungsi untuk mencari jalur termurah menggunakan algoritma Branch and Bound
   const findCheapestPath = () => {
+
+    const startTime = performance.now(); // Waktu mulai pencarian jalur termurah
+
     let minCost = Infinity;// Menyimpan jarak terpendek dari start ke setiap simpul
     let minPrice = Infinity;// Menyimpan simpul sebelumnya dalam jalur terpendek
     let optimalPath = [];// Menyimpan simpul yang sudah dikunjungi
@@ -58,6 +63,11 @@ const BranchAndBound = () => {
     setPath(optimalPath);
     setCost(minCost);
     setPrice(minPrice);
+
+    const endTime = performance.now(); // Waktu selesai pencarian jalur termurah
+    const runningTime = endTime - startTime; // Menghitung selisih waktu
+
+    setRunningTime(runningTime);
   };
 
   return (
@@ -76,6 +86,7 @@ const BranchAndBound = () => {
           <p>Jalur Termurah: {path.join(' -> ')}</p>
           <p>Jarak: {cost}</p>
           <p>Harga: {price}</p>
+          <p>Running Time: {runningTime.toFixed(2)} ms</p>
         </div>
       </div>
     </div>

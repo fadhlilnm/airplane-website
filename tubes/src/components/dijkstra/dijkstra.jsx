@@ -18,8 +18,12 @@ const Dijkstra = () => {
   const [cost, setCost] = useState(0);
   const [price, setPrice] = useState(0);
 
+  const [runningTime, setRunningTime] = useState(0);
+
   // Fungsi untuk mencari jalur termurah menggunakan algoritma Dijkstra
   const findCheapestPath = () => {
+    const startTime = performance.now();
+
     const distances = {}; // Menyimpan jarak terpendek dari start ke setiap simpul
     const previousNodes = {}; // Menyimpan simpul sebelumnya dalam jalur terpendek
     const visited = []; // Menyimpan simpul yang sudah dikunjungi
@@ -65,10 +69,14 @@ const Dijkstra = () => {
       currentNode = previousNodes[currentNode];
     }
 
+    const endTime = performance.now();
+    const elapsed = endTime - startTime;
+
     // Mengupdate state dengan hasil pencarian
     setPath(optimalPath);
     setCost(distances[end]);
     setPrice(Graph[start][end].price);
+    setRunningTime(elapsed);
   };
 
   return (
@@ -88,6 +96,7 @@ const Dijkstra = () => {
           <p>Jalur Termurah: {path.join(' -> ')}</p>
           <p>Jarak: {cost}</p>
           <p>Harga: {price}</p>
+          <p>Running Time: {runningTime} ms</p>
         </div>
       </div>
     </div>
