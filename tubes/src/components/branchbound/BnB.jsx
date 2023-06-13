@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 // Representasi graf dengan simpul-simpul, bobot distance, dan harga lintasan antar simpul
 const Graph = {
-  Jakarta: { Denpasar: { distance: 1200, price: 1000000 }, Lombok: { distance: 1400, price: 1200000 }, Makassar: { distance: 1700, price: 1100000 }, Balikpapan: { distance: 2000, price: 900000 }, Surabaya: { distance: 800, price: 1100000 } },
+  Jakarta: { Denpasar: { distance: 1200, price: 1000000 }, Lombok: { distance: 1400, price: 1200000 }, Makassar: { distance: 1700, price: 1100000 }, Balikpapan: { distance: 2000, price: 900000 }, Surabaya: { distance: 8000, price: 11000000 } },
   Denpasar: { Surabaya: { distance: 400, price: 600000 } },
   Lombok: { Surabaya: { distance: 600, price: 700000 } },
   Makassar: { Surabaya: { distance: 800, price: 850000 } },
